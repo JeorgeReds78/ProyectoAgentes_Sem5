@@ -1,6 +1,4 @@
 """
-    Bot class and Box class for the model.
-
     Authors:
         - Carlos Alan Gallegos Espindola  (A01751117)
         - Paulina Guadalupe Alva Martinez (A01750624)
@@ -11,7 +9,11 @@
     Last Modification: 21/11/2022
 """
 
-import mesa # Base class for agents
+import mesa # Base import for Code
+from mesa import Model # Import for the model
+from mesa.time import RandomActivation # Import for the scheduler
+from mesa.space import MultiGrid # Import for the grid
+import random # Import for random choices
 
 class Bot(mesa.Agent):
     ''' Class that represents the bots in the model 
@@ -25,6 +27,7 @@ class Bot(mesa.Agent):
             - pickBox: Method that makes the bot pick a box
             - dropBox: Method that makes the bot drop a box at destination
     '''
+
     def __init__(self, unique_id, model, hasBox, maxBoxes):
         ''' Constructor of the Bot class
         
@@ -70,6 +73,7 @@ class Bot(mesa.Agent):
             Returns:
                 - None
         '''
+        # ? List of positions that cant be moved to or pick a box from
         destination = [(0,0),(0,3),(0,6),(0,9)]
         # ? Vision of box && Vision list
         self.vision = []
@@ -102,7 +106,7 @@ class Bot(mesa.Agent):
         if self.seeBox() == False:
             self.vision = []
         else:
-       
+        
             self.seenBoxes()
 
         # ? Choose next move
@@ -271,3 +275,80 @@ class Box(mesa.Agent):
                         self.pickable = False
         else:
             return None
+
+class ModelClass(Model):
+    ''' Class that represents the model
+
+        Methods:
+            - __init__: Constructor of the class
+            - step: Method that makes the model move
+            - createAgents: Method that creates the agents
+    '''
+    def __init__(self, numberOfBoxes, width, height):
+        ''' Constructor of the class
+
+            Args:
+                - self: Instance of the class
+                - numberOfBoxes: Number of boxes in the model
+                - width: Width of the model
+                - height: Height of the model
+
+            Returns:
+                - None
+        '''
+        self.grid = MultiGrid(width, height, False)
+        self.schedule = RandomActivation(self)
+        self.running = True
+        self.num_boxes = numberOfBoxes
+
+        # ?Creates the border of the grid
+        grid = [(x,y) for y in range(height) for x in range(width)]
+        grid.remove((0,0))
+        grid.remove((0,3))
+        grid.remove((0,6))
+        grid.remove((0,9))
+
+        # Create Bots
+        for i in range(5):
+            a = Bot(i, self,False,self.num_boxes)
+            self.schedule.add(a)
+            pos = random.choice(grid)
+            grid.remove(pos)
+            # Add the agent to a random grid cell
+            self.grid.place_agent(a, pos)
+
+        # Create Boxes
+        for i in range(6, 6+numberOfBoxes):
+            b = Box(i, self,False,False,True)
+            self.schedule.add(b)
+            pos = random.choice(grid)
+            grid.remove(pos)
+            self.grid.place_agent(b, pos)
+
+    def step(self):
+        ''' Method that makes the model move
+
+            Args:
+                - self: Instance of the class
+
+            Returns:
+                - None
+        '''
+        self.schedule.step()
+        if self.current_boxes_stacked(self):
+            self.running = False
+
+    @staticmethod
+    def current_boxes_stacked(model):
+        ''' Method that checks if the boxes are stacked
+
+            Args:
+                - self: Instance of the class
+
+            Returns:
+                - True if the boxes are stacked (finished)
+        '''
+        for agent in  model.schedule.agents:
+            if type(agent) == Bot:
+                if agent.finished:
+                    return True 
