@@ -14,6 +14,8 @@
 # Imports 
 from mesa.visualization.modules import CanvasGrid # CanvasGrid is a visualization module that displays a grid of cells
 from mesa.visualization.ModularVisualization import ModularServer # ModularServer is a class that allows
+from mesa.visualization.UserParam import UserSettableParameter # Lets user decide the parameters of the model
+
 
 from Modelo import ModelClass # Import the class ModelClass
 from mesa.visualization.modules import CanvasGrid # CanvasGrid is a visualization module that displays a grid of cells
@@ -30,7 +32,15 @@ PORT = 8080
 simulation_params = {
     "numberOfBoxes": 10,
     "width": NUMBER_OF_CELLS,
-    "height": NUMBER_OF_CELLS
+    "height": NUMBER_OF_CELLS,
+    "steps": UserSettableParameter(
+        "slider", 
+        "Steps", 
+        1250, # Default 
+        100, # Min
+        10000, # Max
+        1 # Step
+    ),
 }
 
 def agent_portrayal(agent):

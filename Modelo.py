@@ -26,7 +26,7 @@ class ModelClass(Model):
             - createAgents: Method that creates the agents
     '''
 
-    def __init__(self, numberOfBoxes, width, height):
+    def __init__(self, numberOfBoxes, width, height, steps):
         ''' Constructor of the class
 
             Args:
@@ -42,6 +42,8 @@ class ModelClass(Model):
         self.schedule = RandomActivation(self)
         self.running = True
         self.num_boxes = numberOfBoxes
+        self.steps = steps
+        self.curStep = 0
         spaces = self.grid.width * self.grid.height
         rspaces = list(range(spaces))
         rspaces.remove(0)
@@ -49,9 +51,6 @@ class ModelClass(Model):
         rspaces.remove(2)
         rspaces.remove(3)
         rspaces.remove(4)
-
-        # ?Creates the border of the grid
-        border = [(x,y) for y in range(height) for x in range(width) if y in [0, height-1] or x in [0, width - 1]]
 
         # Create Bots
         for i in range(5):
@@ -61,18 +60,13 @@ class ModelClass(Model):
             place = self.random.choice(rspaces)
             rspaces.remove(place)
             place = [int(x) for x in str(place)]
-            if len (place) == 1:
+            if len (place) <= 1:
                 x = int(place[0])
                 y = int(place[0])
-            elif len (place) == 2:
+            else:
                 x = int(place[0])
                 y = int(place[1])
-            elif len (place) == 3:
-                x = int(place[0],place[1])
-                y = int(place[3])
-            elif len (place) == 4:
-                x = int(place[0],place[1])
-                y = int(place[3],place[4]), (x, y)
+            self.grid.place_agent(a, (x, y))
 
         # Create Boxes
         for i in range(6, 6+numberOfBoxes):
@@ -82,18 +76,12 @@ class ModelClass(Model):
             place = self.random.choice(rspaces)
             rspaces.remove(place)
             place = [int(x) for x in str(place)]
-            if len (place) == 1:
+            if len (place) <= 1:
                 x = int(place[0])
                 y = int(place[0])
-            elif len (place) == 2:
+            else:
                 x = int(place[0])
                 y = int(place[1])
-            elif len (place) == 3:
-                x = int(place[0],place[1])
-                y = int(place[3])
-            elif len (place) == 4:
-                x = int(place[0],place[1])
-                y = int(place[3],place[4])
             self.grid.place_agent(b, (x, y))
 
     def step(self):
@@ -106,7 +94,8 @@ class ModelClass(Model):
                 - None
         '''
         self.schedule.step()
-        if self.current_boxes_stacked(self):
+        self.curStep += 1
+        if self.current_boxes_stacked(self) or self.curStep == self.steps:
             self.running = False
 
     @staticmethod

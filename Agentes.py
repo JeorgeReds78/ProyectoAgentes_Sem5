@@ -102,7 +102,6 @@ class Bot(mesa.Agent):
         if self.seeBox() == False:
             self.vision = []
         else:
-       
             self.seenBoxes()
 
         # ? Choose next move
@@ -185,15 +184,18 @@ class Bot(mesa.Agent):
         '''
         for destination in self.possibleSee:
             if destination == (0,0) or destination == (0,3) or destination == (0,6) or destination == (0,9):
-                agentToP = Box(self.boxID, self.model, False, False, False)
-                self.model.grid.place_agent(agentToP, destination)
+                if len(self.boxVision) > 5:
+                    self.model.grid.move_agent(self, self.possibleSteps[0])
+                else:
+                    agentToP = Box(self.boxID, self.model, False, False, False)
+                    self.model.grid.place_agent(agentToP, destination)
 
-                for agent in self.boxVision:
-                    if type(agent) == Box and agent.unique_id == self.boxID:
-                        agent.arrived = True
-                
-                self.boxID = 0
-                self.hasBox = False
+                    for agent in self.boxVision:
+                        if type(agent) == Box and agent.unique_id == self.boxID:
+                            agent.arrived = True
+                    
+                    self.boxID = 0
+                    self.hasBox = False
 
     def check(self):
         ''' Method that checks if the bot has finished
