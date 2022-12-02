@@ -146,7 +146,7 @@ Server port = 8585
 ## Authors
 
 - [@AlanGallegosEsp](https://github.com/AlanGallegosEsp) Python and C# implementation
-- [@JeorgeReds78](https://github.com/JeorgeReds78) Python implementation
-- [@GlitcherSoul](https://github.com/GlitcherSoul) C# implementation
-- [@PatoAm10](https://github.com/AlanGallegosEsp) C# implementation
+- [@JeorgeReds78](https://github.com/JeorgeReds78) Documentation and Diagram maker
+- [@GlitcherSoul](https://github.com/GlitcherSoul) Unity model creation
+- [@PatoAm10](https://github.com/AlanGallegosEsp) Unity model creation
 
