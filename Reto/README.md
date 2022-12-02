@@ -8,15 +8,105 @@ the traffic lights according to their indication (red = stop / green = go).
  
 
  Python:
- Creation of Agents, Model and Servers(Flask and Modular server for visualization with mesa). [Flask hasnt been implemented yet 28/11/22]
+ Creation of Agents, Model and Servers(Flask and Modular server for visualization with mesa). [Flask has not been implemented yet 28/11/22]
+
+ Update[2/12/22]: Flask and Modular server have been implemented on the proyect 
 
 
  C#: Unity code for creation of Agents objects.  
 
 
-## PDF Revision 60%
+## PDF Evidencias
 
 [Revisión 3 - Avance al 60%](https://docs.google.com/document/d/1hMn1L58V69s3SMKBy_CovqNTdjIEl82z41kou12D--0/edit?usp=sharing)
+
+[Evidencia 2. Documento](https://docs.google.com/document/d/1410A9130NnOKr4161wfeVJl0irlNftKyVbuUZ-Mvf_0/edit?usp=sharing)
+## API Reference
+
+#### Initiate the Model 
+
+```http
+  POST http://localhost:8585/init
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `MAXCARS` | `int` | **Required**. Max. number of cars in simulation |
+
+#### Get cars data
+
+```http
+  GET http://localhost:8585/getCars
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | Id of Car |
+| `x`      | `int` | X position of Car |
+| `y`      | `int` | Y position of Car |
+| `z`      | `int` | Z position of Car |
+| `arrived`      | `bool` | True if car arrived else false |
+| `status`      | `bool` | True if car has not crashed else false |
+| `facing`      | `string` | What direction is car facing [North, South, East, North] |
+
+#### Get roads data
+
+```http
+  GET http://localhost:8585/getRoads
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | Id of Road |
+| `x`      | `int` | X position of Road |
+| `y`      | `int` | Y position of Road |
+| `z`      | `int` | Z position of Road |
+
+#### Get destinations data
+
+```http
+  GET http://localhost:8585/getDestination
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | Id of Destination |
+| `x`      | `int` | X position of Destination |
+| `y`      | `int` | Y position of Destination |
+| `z`      | `int` | Z position of Destination |
+
+#### Get obstacles data
+
+```http
+  GET http://localhost:8585/getObstacles
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | Id of Obstacles |
+| `x`      | `int` | X position of Obstacles |
+| `y`      | `int` | Y position of Obstacles |
+| `z`      | `int` | Z position of Obstacles |
+
+#### Get traffic lights data
+
+```http
+  GET http://localhost:8585/getTraficlights
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `id`      | `string` | Id of Traffic light |
+| `x`      | `int` | X position of Traffic light |
+| `y`      | `int` | Y position of Traffic light |
+| `z`      | `int` | Z position of Traffic light |
+| `state`      | `bool` | Z position of Road |
+
+#### Update the model
+
+```http
+  GET http://localhost:8585/getTraficlights
+```
 
 
 
@@ -36,7 +126,7 @@ Run python server
 
 #### Does it has a maximum number of cars that it can run?
 
-Yes, we recommend 10 or less 
+Yes, we recommend 5 or less but can manage up to 14
 
 #### How do I install Flask or/and Mesa?
 ##### On windows 
@@ -52,7 +142,7 @@ foo@foo:~$ pip install Mesa
 
 #### What is the server port designated on the Server{F/M}.py?
 
-Server port = 8080
+Server port = 8585
 ## Authors
 
 - [@AlanGallegosEsp](https://github.com/AlanGallegosEsp) Python and C# implementation
