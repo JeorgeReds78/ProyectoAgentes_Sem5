@@ -19,6 +19,7 @@ class Car(Agent):
         Methods:
             - __init__: Constructor of the class
             - step: Method that is called every step of the model
+            - move: Method that moves the car
             - onEdge: Method that checks if the car is on the edge of the grid
             - onBorder: Method that checks if the car is on the border of the grid
             - whatDirImOn: Method that checks the direction of the road the car is on

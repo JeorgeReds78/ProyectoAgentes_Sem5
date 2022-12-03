@@ -21,6 +21,26 @@ the traffic lights according to their indication (red = stop / green = go).
 [Revisión 3 - Avance al 60%](https://docs.google.com/document/d/1hMn1L58V69s3SMKBy_CovqNTdjIEl82z41kou12D--0/edit?usp=sharing)
 
 [Evidencia 2. Documento](https://docs.google.com/document/d/1410A9130NnOKr4161wfeVJl0irlNftKyVbuUZ-Mvf_0/edit?usp=sharing)
+
+## Relfexiones individuales
+
+* [Carlos Alan Gallegos Espíndola ---- A01751117](https://docs.google.com/document/d/1cm1S3qipzg9TQA8DAmGJ9aHwsRqioQgcW3-VWe95d2o/edit)
+* [Jorge Rojas Rivas ---- A01745334](https://docs.google.com/document/d/1j8-SZlDl8OG8ClCWr1VZV-7f5rz3xXZV/edit?usp=sharing&ouid=108466048207018234991&rtpof=true&sd=true)
+* [Omar Rodrigo Talavera  ---- A01752221](https://docs.google.com/document/d/15gdy3zgNnz9glJkmew_eWF7RwBgEuJdko9a6SItwu6U/edit?usp=sharing)
+* [Paulina Guadalupe Alva Martínez ---- A01750624](https://docs.google.com/document/d/13ofsOY7S3cuEgHku5t0i3M1D2QT5jUAo9rSpgGGDjTE/edit?usp=sharing)
+## How to setup 
+
+* [Setup for python](https://clipchamp.com/watch/4cYgZWiCIwU)
+* [Setup for unity](https://clipchamp.com/watch/7OkkSoEfe8m)
+
+## Run test on Modular server and Flask with Unity
+
+* [Mesa Modular server run](https://clipchamp.com/watch/ISf74LASAyb)
+* [Unity Flask server run](https://clipchamp.com/watch/W7lQI76Xmn2)
+
+## Folder with videos
+
+[Folder on Google Drive](https://drive.google.com/drive/folders/1QDMx5lPd0LGqwbSO6fIvhgnaXUfQppSW?usp=share_link)
 ## API Reference
 
 #### Initiate the Model 
@@ -126,7 +146,7 @@ Run python server
 
 #### Does it has a maximum number of cars that it can run?
 
-Yes, we recommend 5 or less but can manage up to 14
+Yes, we recommend 6 or less but can manage up to 10 (Best Scenario on 4 cars)
 
 #### How do I install Flask or/and Mesa?
 ##### On windows 
@@ -145,8 +165,8 @@ foo@foo:~$ pip install Mesa
 Server port = 8585
 ## Authors
 
-- [@AlanGallegosEsp](https://github.com/AlanGallegosEsp) Python and C# implementation
-- [@JeorgeReds78](https://github.com/JeorgeReds78) Python implementation
+- [@AlanGallegosEsp](https://github.com/AlanGallegosEsp) Python and C# implementation 
+- [@JeorgeReds78](https://github.com/JeorgeReds78) Diagram and documentation making
 - [@GlitcherSoul](https://github.com/GlitcherSoul) C# implementation
-- [@PatoAm10](https://github.com/AlanGallegosEsp) C# implementation
+- [@PatoAm10](https://github.com/AlanGallegosEsp) C# implementation and Diagram with documentation making
 

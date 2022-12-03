@@ -15,6 +15,7 @@ from agents import * # Import Car, Road, Traffic_Light, Obstacle and Destination
 from model import Model # Import Model class
 from mesa.visualization.modules import CanvasGrid # Import CanvasGrid module
 from mesa.visualization.ModularVisualization import ModularServer # Import ModularServer class
+from mesa.visualization.UserParam import UserSettableParameter # Import UserSettableParameter class
 
 def agent_portrayal(agent):
     """ Function to portray agents.
@@ -70,7 +71,14 @@ with open('d:/Storage/ThisPC/Storage/Git/Examen/CODIGOLUNA2.4/python/new.txt') a
 
     print(f'width: {width}, height: {height}')
 
-model_params = {"numberCars":4}
+model_params = {"numberCars": UserSettableParameter(
+    "slider", 
+    "Number of cars", 
+    4, # DEFAULT VALUE
+    1, # Min value
+    10, # Max value
+    1
+    ),}
 
 grid = CanvasGrid(agent_portrayal, width, height, 400, 400)
 
