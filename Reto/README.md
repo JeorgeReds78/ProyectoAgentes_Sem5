@@ -168,12 +168,5 @@ Server port = 8585
 
 - [@AlanGallegosEsp](https://github.com/AlanGallegosEsp) Python and C# implementation 
 - [@JeorgeReds78](https://github.com/JeorgeReds78) Diagram and documentation making
-- [@GlitcherSoul](https://github.com/GlitcherSoul) C# implementation
-- [@PatoAm10](https://github.com/AlanGallegosEsp) C# implementation and Diagram with documentation making
-=======
-- [@AlanGallegosEsp](https://github.com/AlanGallegosEsp) Python and C# implementation
-- [@JeorgeReds78](https://github.com/JeorgeReds78) Documentation and Diagram maker
 - [@GlitcherSoul](https://github.com/GlitcherSoul) Unity model creation
-- [@PatoAm10](https://github.com/AlanGallegosEsp) Unity model creation
-
-
+- [@PatoAm10](https://github.com/AlanGallegosEsp) Unity model creationn and Diagram with documentation making
