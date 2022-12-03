@@ -165,7 +165,7 @@ foo@foo:~$ pip install Mesa
 Server port = 8585
 ## Authors
 
-<<<<<<< HEAD
+
 - [@AlanGallegosEsp](https://github.com/AlanGallegosEsp) Python and C# implementation 
 - [@JeorgeReds78](https://github.com/JeorgeReds78) Diagram and documentation making
 - [@GlitcherSoul](https://github.com/GlitcherSoul) C# implementation
@@ -175,5 +175,5 @@ Server port = 8585
 - [@JeorgeReds78](https://github.com/JeorgeReds78) Documentation and Diagram maker
 - [@GlitcherSoul](https://github.com/GlitcherSoul) Unity model creation
 - [@PatoAm10](https://github.com/AlanGallegosEsp) Unity model creation
->>>>>>> 51c82923d0e6003a5ed55bcee442c9e62d685add
+
 
